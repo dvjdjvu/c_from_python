@@ -14,6 +14,13 @@ import _test
 # инициализация ffi
 ffi = FFI()
 
+###
+## C
+###
+
+print("CFFI\n")
+print("C\n")
+
 start_time = time.time()
 
 ##
