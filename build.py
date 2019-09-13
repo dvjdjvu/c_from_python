@@ -7,7 +7,7 @@ if __name__ == "__main__":
     ffi = cffi.FFI()
     PATH = os.getcwd()#os.path.dirname(__file__)
     
-    # test.h относительно build_point.py
+    # test.h относительно build.py
     with open(os.path.join(PATH, "src/c/test.h")) as f:
         ffi.cdef(f.read())
     
@@ -19,5 +19,5 @@ if __name__ == "__main__":
         library_dirs=[PATH, 'objs/'],
     )
 
-    # Куда компилируется _point.cpython-36m-x86_64-linux-gnu.
+    # Куда компилируется _test.cpython-36m-x86_64-linux-gnu.
     ffi.compile(tmpdir='./lib')
