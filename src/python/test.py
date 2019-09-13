@@ -7,11 +7,14 @@ sys.path.append('.')
 sys.path.append('lib/')
 sys.path.append('../../lib/')
 
+import time
 import _test
 
 if __name__ == '__main__':
     # инициализация ffi
     ffi = FFI()
+    
+    start_time = time.time()
         
     ##
     # Работа с функциями
@@ -52,10 +55,12 @@ if __name__ == '__main__':
     test_st = _test.ffi.new("test_st_t *")
     test_st.val1 = 5
     test_st.val2 = 5.1234567
-    test_st.val3 = 'S'.encode('utf-8')
+    test_st.val3 = 'Z'.encode('utf-8')
     
     ret = _test.lib.func_ret_struct(test_st)
 
     # Полученные данные из C
     print('ret val1 = {}\nret val2 = {}\nret val3 = {}'.format(ret.val1, ret.val2, ret.val3.decode("utf-8")))
 
+    print("--- %s seconds ---" % (time.time() - start_time))
+    
