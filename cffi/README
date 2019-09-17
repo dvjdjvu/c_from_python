@@ -1,0 +1,4 @@
+Примеры вызова C из Python CFFI.
+
+make
+./src/python/main.py

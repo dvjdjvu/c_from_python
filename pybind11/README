@@ -1,0 +1,4 @@
+Примеры вызова C из Python через pybind11.
+
+make
+./src/python/main.py

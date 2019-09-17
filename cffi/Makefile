@@ -32,7 +32,6 @@ $(BUILD)/test.o: $(DEPS) \
 
 test: libtest.so
 	./build.py
-	./test.py
 
 clean:
 	rm -rf $(BUILD)
