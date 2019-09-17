@@ -1,0 +1,4 @@
+Примеры вызова C/C++ из Python через ctypes.
+
+make
+./src/python/main.py
