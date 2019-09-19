@@ -7,7 +7,7 @@ import time
 # Пути до модуля _test
 sys.path.append('lib/')
 
-# подключаем модуль скомпелированный pybind11
+# подключаем модуль
 import _test
 
 ###
