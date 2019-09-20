@@ -23,7 +23,7 @@ start_time = time.time()
 ##
 # Работа с функциями
 ##
-
+    
 # Указываем, что функция возвращает int
 test.func_ret_int.restype = ctypes.c_int
 # Указываем, что функция принимает аргумент int
@@ -101,7 +101,8 @@ ret = test.func_ret_struct(ctypes.byref(test_st))
 # Полученные данные из C
 print('ret val1 = {}\nret val2 = {}\nret val3 = {}'.format(ret.contents.val1, ret.contents.val2, ret.contents.val3.decode("utf-8")))
 
-print("--- %s seconds ---" % (time.time() - start_time))
+# Время работы
+print("--- {} seconds ---".format((time.time() - start_time)))
 
 ###
 ## C++
@@ -124,7 +125,7 @@ test = testpp.test_new()
 ##
 
 
-# Указываем, что функция возвращает char *
+# Ука�ываем, что функция возвращает char *
 testpp.test_ret_str.restype = ctypes.c_char_p
 # Указываем, что функция принимает аргумент void * и char *
 testpp.test_ret_str.argtypes = [ctypes.c_void_p, ctypes.c_char_p]
@@ -164,4 +165,5 @@ print('ret test_get_c: ', testpp.test_get_c(test).decode("utf-8"))
 # Удаляем класс
 testpp.test_del(test) 
 
-print("--- %s seconds ---" % (time.time() - start_time))
+print("--- {} seconds ---".format((time.time() - start_time)))
+

@@ -64,4 +64,4 @@ ret = _test.func_ret_struct(_test_st)
 print('ret val1 = {}\nret val2 = {}\nret val3 = {}'.format(ret.val1, ret.val2, ret.val3))
 
 # Время работы
-print("--- %s seconds ---" % (time.time() - start_time))
+print("--- {} seconds ---".format((time.time() - start_time)))
