@@ -1,0 +1,4 @@
+Примеры вызова C/C++ из Python через C API.
+
+make
+./src/python/main.py
