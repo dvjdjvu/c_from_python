@@ -33,6 +33,9 @@ PyInit__test(void) {
     PyModule_AddObject(mod, "b", PyFloat_FromDouble(b)); // double
     PyModule_AddObject(mod, "c", Py_BuildValue("b", c)); // char
 
+    // Добавляем структуру
+    
+    // Завершение инициализации структуры
     if (PyType_Ready(&test_st_t_Type) < 0)
         return NULL;
     
@@ -51,7 +54,7 @@ double b = 5.12345;
 char c = 'X'; // 88
 
 static PyObject *
-func_hello(PyObject *self, PyObject *args) {
+func_hello(PyObject *self, PyObject *args) { // Можно без args, но будет warning при компиляции.
     puts("Hello!");
     Py_RETURN_NONE;
 }

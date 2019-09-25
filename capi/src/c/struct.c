@@ -1,11 +1,13 @@
 #include "test.h"
 #include "struct.h"
 
+// Освобождение структуры
 static void
 test_st_t_dealloc(test_st_t* self) {
     Py_TYPE(self)->tp_free((PyObject*)self);
 }
 
+// Создание структуры
 static PyObject *
 test_st_t_new(PyTypeObject *type, PyObject *args, PyObject *kwds) {
     test_st_t *self;
@@ -20,6 +22,7 @@ test_st_t_new(PyTypeObject *type, PyObject *args, PyObject *kwds) {
     return (PyObject *)self;
 }
 
+// Инициализация структуры, заполняем её переданными значениями
 static int
 test_st_t_init(test_st_t *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = {"val1", "val2", "val3", NULL};
@@ -30,6 +33,7 @@ test_st_t_init(test_st_t *self, PyObject *args, PyObject *kwds) {
     return 0;
 }
 
+// Описываем аттрибуты из которых состоит структура
 static PyMemberDef test_st_t_members[] = {
     {"val1", T_INT, offsetof(test_st_t, val1), 0, "int"},
     {"val2", T_DOUBLE, offsetof(test_st_t, val2), 0, "double"},
@@ -37,16 +41,18 @@ static PyMemberDef test_st_t_members[] = {
     {NULL}
 };
 
+// Описание методов стрктуры, но у классической структуры не может быть методов!
 static PyMethodDef test_st_t_methods[] = {
     {NULL}  /* Sentinel */
 };
 
+// Структура описывающая нашу структуру. Какие атррибуты, методы, конструкторы, леструкторы и т.д. и т.п.
 PyTypeObject test_st_t_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
     "_test.test_st_t",         /* tp_name */
     sizeof(test_st_t),         /* tp_basicsize */
     0,                         /* tp_itemsize */
-    (destructor)test_st_t_dealloc, /* tp_dealloc */
+    (destructor) test_st_t_dealloc, /* tp_dealloc */
     0,                         /* tp_print */
     0,                         /* tp_getattr */
     0,                         /* tp_setattr */
@@ -78,34 +84,7 @@ PyTypeObject test_st_t_Type = {
     0,                         /* tp_descr_get */
     0,                         /* tp_descr_set */
     0,                         /* tp_dictoffset */
-    (initproc)test_st_t_init,  /* tp_init */
+    (initproc) test_st_t_init, /* tp_init */
     0,                         /* tp_alloc */
     test_st_t_new,             /* tp_new */
 };
-
-static PyModuleDef noddy2module = {
-    PyModuleDef_HEAD_INIT,
-    "noddy2",
-    "Example module that creates an extension type.",
-    -1,
-    NULL, NULL, NULL, NULL, NULL
-};
-
-/*
-PyMODINIT_FUNC
-PyInit_noddy2(void)
-{
-    PyObject* m;
-
-    if (PyType_Ready(&test_st_t_Type) < 0)
-        return NULL;
-
-    m = PyModule_Create(&noddy2module);
-    if (m == NULL)
-        return NULL;
-
-    Py_INCREF(&test_st_t_Type);
-    PyModule_AddObject(m, "test_st_t", (PyObject *)&test_st_t_Type);
-    return m;
-}
-*/
