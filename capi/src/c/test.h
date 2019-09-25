@@ -17,7 +17,7 @@ extern int a;
 extern double b;
 extern char c;
 
-static PyObject *func_hello(PyObject *self);
+static PyObject *func_hello(PyObject *self, PyObject *args);
 static PyObject *func_ret_int(PyObject *self, PyObject *args);
 static PyObject *func_ret_double(PyObject *self, PyObject *args);
 static PyObject *func_ret_str(PyObject *self, PyObject *args);

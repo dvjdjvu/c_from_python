@@ -3,9 +3,9 @@
 
 from distutils.core import setup, Extension
 
-mdl = Extension('do_nothing', sources = ['src/c/test.c'])
+mdl = Extension('_test', sources = ['src/c/test.c', 'src/c/struct.c'])
 
-setup(name = 'do_nothing',
+setup(name = '_test',
         version = '1.0',
         description = 'Python C API Simplest Module',
         ext_modules = [mdl])

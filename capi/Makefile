@@ -13,11 +13,10 @@ INCS = -I$(SRC)
 
 DEPS = $(SRC)/test.h 
 
-DEPSPP = $(SRC)/test.hpp
+OBJS = $(BUILD)/test.o \
+	$(BUILD)/struct.o 
 
-OBJS = $(BUILD)/test.o  
-
-BINS = $(BUILD)/_test.so 
+BINS = $(BUILD)/_test.so
 
 BINS2 = _test.so 
 
@@ -32,6 +31,10 @@ $(BUILD)/_test.so: \
 $(BUILD)/test.o: $(DEPS) \
 	$(SRC)/test.c
 	$(CC) -c $(CFLAGS) -fPIC $(INCS) -o $(BUILD)/test.o $(SRC)/test.c
+
+$(BUILD)/struct.o: $(DEPS) \
+	$(SRC)/struct.c
+	$(CC) -c $(CFLAGS) -fPIC $(INCS) -o $(BUILD)/struct.o $(SRC)/struct.c
 
 clean:
 	rm -rf $(BUILD)

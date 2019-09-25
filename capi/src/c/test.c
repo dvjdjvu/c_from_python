@@ -5,6 +5,7 @@
 #include <Python.h>
 
 #include "test.h"
+#include "struct.h"
 
 // Список функций модуля
 static PyMethodDef methods[] = {
@@ -13,7 +14,7 @@ static PyMethodDef methods[] = {
     {"func_ret_double", func_ret_double, METH_VARARGS, "func_ret_double"},
     {"func_ret_str", func_ret_str, METH_VARARGS, "func_ret_str"},
     {"func_many_args", func_many_args, METH_VARARGS, "func_many_args"},
-    //{"func_ret_struct", myprint, METH_NOARGS, "func_ret_struct"},
+    {"func_ret_struct", func_ret_struct, METH_VARARGS, "func_ret_struct"},
     {NULL, NULL, 0, NULL}
 };
 
@@ -22,31 +23,9 @@ static struct PyModuleDef module = {
     PyModuleDef_HEAD_INIT, "_test", "Test module", -1, methods
 };
 
-// Описание структуры test_st_t
-PyTypeObject test_st_t_type = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-};
-
-// Определяем инициализацию структуры test_st_t
-
-static int test_st_t_init(test_st_t *self, PyObject *args, PyObject *kwargs) {
-    self->val1 = 0;
-    self->val2 = 0.0;
-    self->val3 = 0;
-    if (!PyArg_ParseTuple(args, "|idb:test_st_t.__init__()", &self->val1, &self->val2, &self->val3))
-        return -1;
-    return 0;
-}
-
-static PyObject *test_st_t_dump(test_st_t *self) {
-    printf("%d %f %c\n", self->val1, self->val2, self->val3);
-    Py_RETURN_NONE;
-}
-
-
 // Инициализация модуля
-
-PyMODINIT_FUNC PyInit__test(void) {
+PyMODINIT_FUNC 
+PyInit__test(void) {
     PyObject *mod = PyModule_Create(&module);
 
     // Добавляем глобальные переменные
@@ -54,14 +33,12 @@ PyMODINIT_FUNC PyInit__test(void) {
     PyModule_AddObject(mod, "b", PyFloat_FromDouble(b)); // double
     PyModule_AddObject(mod, "c", Py_BuildValue("b", c)); // char
 
-    // Добавление структуры
-    PyTypeObject *type = &test_st_t_type;
-    type->tp_name = "myc.test_st_t";
-    type->tp_basicsize = sizeof(test_st_t);
-    type->tp_flags = Py_TPFLAGS_DEFAULT;
-    type->tp_new = PyType_GenericNew;
-    PyModule_AddObject(mod, "test_st_t", (PyObject *) type);
-
+    if (PyType_Ready(&test_st_t_Type) < 0)
+        return NULL;
+    
+    Py_INCREF(&test_st_t_Type);
+    PyModule_AddObject(mod, "test_st_t", (PyObject *) &test_st_t_Type);
+    
     return mod;
 }
 
@@ -74,7 +51,7 @@ double b = 5.12345;
 char c = 'X'; // 88
 
 static PyObject *
-func_hello(PyObject *self) {
+func_hello(PyObject *self, PyObject *args) {
     puts("Hello!");
     Py_RETURN_NONE;
 }
@@ -94,11 +71,13 @@ func_ret_int(PyObject *self, PyObject *args) {
     /* 
      * Альтернативный вариант.
      * 
+    // Получаем аргумент
     PyObject *obj = PyTuple_GetItem(args, 0);
+    // Проверяем его на тип int/long
     if (PyLong_Check(obj)) {
         PyErr_Print();
     }
-    
+    // Приводим (PyObject *) к int
     val = _PyLong_AsInt(obj);
      */
     printf("C get func_ret_int: %d\n", val);
@@ -111,8 +90,6 @@ func_ret_int(PyObject *self, PyObject *args) {
 static PyObject *
 func_ret_double(PyObject *self, PyObject *args) {
     double val;
-
-    Py_ssize_t pos = 0;
 
     if (PyTuple_Size(args) != 1) {
         PyErr_SetString(self, "func_ret_double args error");
@@ -167,16 +144,15 @@ func_many_args(PyObject *self, PyObject *args) {
     return Py_BuildValue("ifs", val1, val2, val3);
 }
 
-
 static PyObject *
 func_ret_struct(PyObject *self, PyObject *args) {
-    /*
-    if (test_st) {
-        printf("C get test_st: val1 - %d, val2 - %f, val3 - %c\n", test_st->val1, test_st->val2, test_st->val3);
-    }
+    
+    test_st_t st;
+    
+    if (!PyArg_ParseTuple(args, "O", &st))
+        Py_RETURN_NONE;
+    
+    printf("C get test_st: val1 - %d, val2 - %f, val3 - %c\n", st.val1, st.val2, st.val3);
 
-    return test_st;
-    */
+    return Py_BuildValue("O", st);
 }
-
-

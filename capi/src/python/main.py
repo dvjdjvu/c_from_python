@@ -9,8 +9,7 @@ sys.path.append('.')
 sys.path.append('lib/')
 sys.path.append('../../lib/')
 
-import _test
- 
+import _test 
  
 ###
 ## C
@@ -57,10 +56,9 @@ print('ret c: ', _test.c)
 
 print('\nРабота со структурами:')
 
-#st = _test.test_st_t
+st = _test.test_st_t(1, 2.3456789, 88)
 
-#print('st: ', dir(_test))
-#print('st: ', st)
+print('ret val1 = {}\nret val2 = {}\nret val3 = {}'.format(st.val1, st.val2, st.val3))
 
 # Время работы
 print("--- {} seconds ---".format((time.time() - start_time)))
