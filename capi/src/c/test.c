@@ -9,8 +9,8 @@
 
 // Список функций модуля
 static PyMethodDef methods[] = {
-    {"func_hello", func_hello, METH_NOARGS, "func_hello"},
-    {"func_ret_int", func_ret_int, METH_VARARGS, "func_ret_int"},
+    {"func_hello", func_hello, METH_NOARGS, "func_hello"}, // Функция без аргументов
+    {"func_ret_int", func_ret_int, METH_VARARGS, "func_ret_int"}, // Функция с аргументами
     {"func_ret_double", func_ret_double, METH_VARARGS, "func_ret_double"},
     {"func_ret_str", func_ret_str, METH_VARARGS, "func_ret_str"},
     {"func_many_args", func_many_args, METH_VARARGS, "func_many_args"},
@@ -66,6 +66,7 @@ static PyObject *
 func_ret_int(PyObject *self, PyObject *args) {
     int val;
 
+    // Проверка кол-ва аргументов
     if (PyTuple_Size(args) != 1) {
         PyErr_SetString(self, "func_ret_int args error");
     }
@@ -152,7 +153,8 @@ func_ret_struct(PyObject *self, PyObject *args) {
     
     test_st_t *st;
     
-    if (!PyArg_ParseTuple(args, "O", &st))
+    // Получаем структуру из Python
+    if (!PyArg_ParseTuple(args, "O", &st)) // O - объект данных
         Py_RETURN_NONE;
     
     printf("C get test_st: val1 - %d, val2 - %f, val3 - %d\n", st->val1++, st->val2++, st->val3++);
