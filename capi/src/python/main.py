@@ -59,7 +59,10 @@ print('\nРабота со структурами:')
 st = _test.test_st_t(1, 2.3456789, 88)
 
 print('st.val1 = {}\nst.val2 = {}\nst.val3 = {}'.format(st.val1, st.val2, st.val3))
-print('ret func_ret_struct: ', _test.func_ret_struct(st))
+st = _test.func_ret_struct(st)
+print("ret func_ret_struct:")
+print('st.val1 = {}\nst.val2 = {}\nst.val3 = {}'.format(st.val1, st.val2, st.val3))
+
 
 # Время работы
 print("--- {} seconds ---".format((time.time() - start_time)))

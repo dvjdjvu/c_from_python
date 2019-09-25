@@ -147,12 +147,12 @@ func_many_args(PyObject *self, PyObject *args) {
 static PyObject *
 func_ret_struct(PyObject *self, PyObject *args) {
     
-    test_st_t st;
+    test_st_t *st;
     
     if (!PyArg_ParseTuple(args, "O", &st))
         Py_RETURN_NONE;
     
-    printf("C get test_st: val1 - %d, val2 - %f, val3 - %d\n", st.val1, st.val2, st.val3);
+    printf("C get test_st: val1 - %d, val2 - %f, val3 - %d\n", st->val1++, st->val2++, st->val3++);
 
     return Py_BuildValue("O", st);
 }
