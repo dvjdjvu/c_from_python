@@ -18,9 +18,8 @@ import _test
 print("C API\n")
 print("C\n")
 
-#print(dir(_test))
-
 start_time = time.time()
+
 
 ##
 # Работа с функциями
@@ -30,9 +29,9 @@ print('Работа с функциями:')
 print('ret func_hello: ', _test.func_hello())
 print('ret func_ret_int: ', _test.func_ret_int(101))
 print('ret func_ret_double: ', _test.func_ret_double(12.123456789))
-# Необходимо строку привести из cdata к массиву байтов, и массив байтов к строке.
 print('ret func_ret_str: ', _test.func_ret_str('Hello!'))
 print('ret func_many_args: ', _test.func_many_args(15, 18.1617, "Many arguments!"))
+
 
 ##
 # Работа с переменными
@@ -56,9 +55,11 @@ print('ret c: ', _test.c)
 
 print('\nРабота со структурами:')
 
+# Создаем структуру
 st = _test.test_st_t(1, 2.3456789, 88)
 
-print('ret val1 = {}\nret val2 = {}\nret val3 = {}'.format(st.val1, st.val2, st.val3))
+print('st.val1 = {}\nst.val2 = {}\nst.val3 = {}'.format(st.val1, st.val2, st.val3))
+print('ret func_ret_struct: ', _test.func_ret_struct(st))
 
 # Время работы
 print("--- {} seconds ---".format((time.time() - start_time)))

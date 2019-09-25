@@ -152,7 +152,7 @@ func_ret_struct(PyObject *self, PyObject *args) {
     if (!PyArg_ParseTuple(args, "O", &st))
         Py_RETURN_NONE;
     
-    printf("C get test_st: val1 - %d, val2 - %f, val3 - %c\n", st.val1, st.val2, st.val3);
+    printf("C get test_st: val1 - %d, val2 - %f, val3 - %d\n", st.val1, st.val2, st.val3);
 
     return Py_BuildValue("O", st);
 }
