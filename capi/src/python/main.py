@@ -62,6 +62,9 @@ print('st.val1 = {}\nst.val2 = {}\nst.val3 = {}'.format(st.val1, st.val2, st.val
 st = _test.func_ret_struct(st)
 print("ret func_ret_struct:")
 print('st.val1 = {}\nst.val2 = {}\nst.val3 = {}'.format(st.val1, st.val2, st.val3))
+# Вызывай метод print нашей структуры, только по скольку C частично ООП
+# То нужно в этод метод передать указатель на нашу структуру
+st.print(st)
 
 
 # Время работы

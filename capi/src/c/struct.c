@@ -41,12 +41,27 @@ static PyMemberDef test_st_t_members[] = {
     {NULL}
 };
 
+// Метод структуры, который печатает структуру
+static PyObject* test_st_print(PyObject *self, PyObject *args)
+{
+    test_st_t *st;
+    
+    // Получаем структуру из Python
+    if (!PyArg_ParseTuple(args, "O", &st)) // O - объект данных
+        Py_RETURN_NONE;
+    
+    printf("method: val1 - %d, val2 - %f, val3 - %d\n", st->val1++, st->val2++, st->val3++);
+    Py_RETURN_NONE;
+}
+
 // Описание методов стрктуры, но у классической структуры не может быть методов!
+// А здесь может!
 static PyMethodDef test_st_t_methods[] = {
+    {"print", test_st_print, METH_VARARGS, "doc string"},
     {NULL}  /* Sentinel */
 };
 
-// Структура описывающая нашу структуру. Какие атррибуты, методы, конструкторы, леструкторы и т.д. и т.п.
+// Структура описывающая нашу структуру. Какие атрибуты, методы, конструкторы, деструкторы и т.д. и т.п.
 PyTypeObject test_st_t_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
     "_test.test_st_t",         /* tp_name */

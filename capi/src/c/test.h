@@ -25,7 +25,7 @@ static PyObject *func_many_args(PyObject *self, PyObject *args);
 static PyObject *func_ret_struct(PyObject *self, PyObject *args);
 
 struct test_st_s {
-    PyObject_HEAD
+    PyObject_HEAD // Макрос объявления нового типа, объекта фиксированного размера
     int val1;
     double val2;
     char val3;
