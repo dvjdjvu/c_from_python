@@ -22,8 +22,8 @@ all: prebuild \
 
 $(LIB)/_test.so: \
 	$(OBJS)
-	$(CC) -fPIC -g -shared -o $(LIB)/_test.so $(OBJS) -lboost_python3 -lpython2.7
-	#$(STRIP) --strip-unneeded $(LIB)/_test.so
+	$(CC) -fPIC -g -shared -o $(LIB)/_test.so $(OBJS) -lboost_python3
+	$(STRIP) --strip-unneeded $(LIB)/_test.so
 
 $(BUILD)/test.o: $(DEPS) \
 	$(SRC)/test.cpp
