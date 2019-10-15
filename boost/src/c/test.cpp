@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <boost/python/ptr.hpp>
-#include <boost/python/object_core.hpp>
-#include <boost/python/class.hpp>
 #include "test.hpp"
 
 int a = 5;

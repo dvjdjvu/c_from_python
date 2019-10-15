@@ -1,6 +1,12 @@
 #ifndef _TEST_H_
 #define	_TEST_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <boost/python/ptr.hpp>
+#include <boost/python/object_core.hpp>
+#include <boost/python/class.hpp>
 #include <boost/python.hpp>
 #include <iostream>
 
