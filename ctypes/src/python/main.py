@@ -157,11 +157,11 @@ testpp.test_get_a.argtypes = [ctypes.c_void_p]
 # Указываем, что функция возвращает double
 testpp.test_get_b.restype = ctypes.c_double
 # Указываем, что функция принимает аргумент void * 
-testpp.test_get_и.argtypes = [ctypes.c_void_p]
+testpp.test_get_b.argtypes = [ctypes.c_void_p]
 # Указываем, что функция возвращает char
 testpp.test_get_c.restype = ctypes.c_char
 # Указываем, что функция принимает аргумент void * 
-testpp.test_get_с.argtypes = [ctypes.c_void_p]
+testpp.test_get_c.argtypes = [ctypes.c_void_p]
 
 print('\nРабота с переменными:')
 print('ret test_get_a: ', testpp.test_get_a(test))
