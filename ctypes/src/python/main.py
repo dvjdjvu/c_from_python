@@ -121,11 +121,11 @@ testpp.test_new.restype = ctypes.c_void_p
 test = testpp.test_new() 
 
 ##
-# Работа с методами
+# Работ� с методами
 ##
 
 
-# Ука�ываем, что функция возвращает char *
+# Указываем, что функция возвращает char *
 testpp.test_ret_str.restype = ctypes.c_char_p
 # Указываем, что функция принимает аргумент void * и char *
 testpp.test_ret_str.argtypes = [ctypes.c_void_p, ctypes.c_char_p]
@@ -152,16 +152,24 @@ print('ret test_ret_double: ', testpp.test_ret_double(test, 9.87654321))
 
 # Указываем, что функция возвращает int
 testpp.test_get_a.restype = ctypes.c_int
+# Указываем, что функция принимает аргумент void * 
+testpp.test_get_a.argtypes = [ctypes.c_void_p]
 # Указываем, что функция возвращает double
 testpp.test_get_b.restype = ctypes.c_double
+# Указываем, что функция принимает аргумент void * 
+testpp.test_get_и.argtypes = [ctypes.c_void_p]
 # Указываем, что функция возвращает char
 testpp.test_get_c.restype = ctypes.c_char
+# Указываем, что функция принимает аргумент void * 
+testpp.test_get_с.argtypes = [ctypes.c_void_p]
 
 print('\nРабота с переменными:')
 print('ret test_get_a: ', testpp.test_get_a(test))
 print('ret test_get_b: ', testpp.test_get_b(test))
 print('ret test_get_c: ', testpp.test_get_c(test).decode("utf-8"))
 
+# Указываем, что функция принимает аргумент void * 
+testpp.test_del.argtypes = [ctypes.c_void_p]
 # Удаляем класс
 testpp.test_del(test) 
 
