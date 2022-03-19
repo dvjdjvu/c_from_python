@@ -1,14 +1,21 @@
-CC = gcc
-PP = g++
+CC = arm-linux-gnueabi-gcc
+PP = arm-linux-gnueabi-g++
 LINK = $(CC)
 LINKPP = $(PP)
-STRIP = strip
 
 SRC = ./src/c
 BUILD = ./objs
 
-CFLAGS      = -g -O2
-PFLAGS      = -std=c++17
+ifeq ($(CC),gcc)
+    CFLAGS = -g -O2
+    PFLAGS = -std=c++17
+    STRIP = strip
+else ifeq ($(CC),arm-linux-gnueabi-gcc)
+    CFLAGS = -Wl,-hash-style=sysv -g -O2 -march=armv7-a
+    PFLAGS = -Wl,-hash-style=sysv -std=c++17 -march=armv7-a
+    STRIP = arm-linux-gnueabi-strip
+endif
+
 CSAHREDLIBS = -shared
 
 INCS = -I$(SRC) 
@@ -31,12 +38,12 @@ all: prebuild \
 
 $(BUILD)/libtest.so: \
 	$(OBJS)
-	$(CC) $(CFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtest.so $(OBJS)
+	$(CC) $(CFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtest.so $(OBJS) 
 	$(STRIP) --strip-unneeded $(BUILD)/libtest.so
 
 $(BUILD)/libtestpp.so: \
 	$(OBJSPP)
-	$(PP) $(CFLAGS) $(PFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtestpp.so $(OBJSPP)
+	$(PP) $(CFLAGS) $(PFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtestpp.so $(OBJSPP) 
 	$(STRIP) --strip-unneeded $(BUILD)/libtestpp.so
 
 $(BUILD)/test.o: $(DEPS) \
