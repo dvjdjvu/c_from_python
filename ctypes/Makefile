@@ -12,7 +12,7 @@ ifeq ($(CC),gcc)
     STRIP = strip
 else ifeq ($(CC),arm-linux-gnueabi-gcc)
     CFLAGS = -Wl,-hash-style=sysv -g -O2 -march=armv7-a
-    PFLAGS = -Wl,-hash-style=sysv -std=c++17 -march=armv7-a
+    PFLAGS = -std=c++17
     STRIP = arm-linux-gnueabi-strip
 endif
 
@@ -62,3 +62,6 @@ prebuild:
 	
 install: 
 	ldconfig
+
+android:
+	cp objs/*.so src/python/android/lib/libtest

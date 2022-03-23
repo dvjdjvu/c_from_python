@@ -3,11 +3,12 @@
 x86_x64 build
 ```bash
 make CC=gcc PP=g++
-./src/python/main.py
+./src/python/x86_64/main.py
 ```
 
 android build
 ```bash
 make CC=arm-linux-gnueabi-gcc PP=arm-linux-gnueabi-g++
+make android
 ```
 
