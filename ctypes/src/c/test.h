@@ -5,9 +5,7 @@
 extern "C" {
 #endif
 
-//#include <stdio.h>
-//#include <string.h>
-//#include <unistd.h>
+#include <stdio.h>
 
 typedef struct test_st_s test_st_t;
 

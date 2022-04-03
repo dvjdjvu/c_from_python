@@ -2,7 +2,7 @@
 #define _TEST_HPP_
 
 #include <iostream>
-#include <string.h>
+#include <string>
 
 class test {
 public:

@@ -9,6 +9,17 @@ make CC=gcc PP=g++
 android build
 ```bash
 make CC=arm-linux-gnueabi-gcc PP=arm-linux-gnueabi-g++
+```
+or
+```bash
+make CC=aarch64-linux-gnu-gcc PP=aarch64-linux-gnu-g++
+```
+or use clang/clang++ android, but dont forget chanche path to clang in Makefile
+```bash
+make
+```
+
+```bash
 make android
 ```
 
