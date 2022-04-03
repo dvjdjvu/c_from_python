@@ -3,7 +3,9 @@
 
 import os
 import sys
-import ctypes
+import ctypes, ctypes.util
+
+ctypes.cdll.LoadLibrary('libs/libs_arm64_v8a/libc++_shared.so')
 
 import kivy
 kivy.require("1.9.1")
@@ -37,8 +39,8 @@ if __name__ == "__main__":
 
     test = None
     # Загрузка библиотеки
-    try :
-        test = ctypes.CDLL('./lib/libtest/libtest.so')
+    try:
+        test = ctypes.CDLL('libtest.so')
     except OSError as e:
         print(str(e))
         exit(0)
@@ -133,5 +135,73 @@ if __name__ == "__main__":
     # Полученные данные из C
     print('ret val1 = {}\nret val2 = {}\nret val3 = {}'.format(ret.contents.val1, ret.contents.val2,
                                                                ret.contents.val3.decode("utf-8")))
+
+    ###
+    ## C++
+    ###
+
+    start_time = time.time()
+
+    print("\n\nC++\n")
+
+    # Загрузка библиотеки
+    testpp = ctypes.CDLL('libs/libs_arm64_v8a/libtestpp.so')
+
+    # Указываем, что функция возвращает указатель
+    testpp.test_new.restype = ctypes.c_void_p
+    # Создание класса test
+    test = testpp.test_new()
+
+    ##
+    # Работа с методами
+    ##
+
+    # Указываем, что функция возвращает char *
+    testpp.test_ret_str.restype = ctypes.c_char_p
+    # Указываем, что функция принимает аргумент void * и char *
+    testpp.test_ret_str.argtypes = [ctypes.c_void_p, ctypes.c_char_p]
+
+    # Указываем, что функция возвращает int
+    testpp.test_ret_int.restype = ctypes.c_int
+    # Указываем, что функция принимает аргумент void * и int
+    testpp.test_ret_int.argtypes = [ctypes.c_void_p, ctypes.c_int]
+
+    # Указываем, что функция возвращает double
+    testpp.test_ret_double.restype = ctypes.c_double
+    # Указываем, что функция принимает аргумент void * и double
+    testpp.test_ret_double.argtypes = [ctypes.c_void_p, ctypes.c_double]
+
+    print('Работа с методами:')
+    # В качестве 1-ого аргумента передаем указатель на наш класс
+    print('ret test_ret_str: ', testpp.test_ret_str(test, 'Hello!'.encode('utf-8')).decode("utf-8"))
+    print('ret test_ret_int: ', testpp.test_ret_int(test, 123))
+    print('ret test_ret_double: ', testpp.test_ret_double(test, 9.87654321))
+
+    ##
+    # Работа с переменными
+    ##
+
+    # Указываем, что функция возвращает int
+    testpp.test_get_a.restype = ctypes.c_int
+    # Указываем, что функция принимает аргумент void *
+    testpp.test_get_a.argtypes = [ctypes.c_void_p]
+    # Указываем, что функция возвращает double
+    testpp.test_get_b.restype = ctypes.c_double
+    # Указываем, что функция принимает аргумент void *
+    testpp.test_get_b.argtypes = [ctypes.c_void_p]
+    # Указываем, что функция возвращает char
+    testpp.test_get_c.restype = ctypes.c_char
+    # Указываем, что функция принимает аргумент void *
+    testpp.test_get_c.argtypes = [ctypes.c_void_p]
+
+    print('\nРабота с переменными:')
+    print('ret test_get_a: ', testpp.test_get_a(test))
+    print('ret test_get_b: ', testpp.test_get_b(test))
+    print('ret test_get_c: ', testpp.test_get_c(test).decode("utf-8"))
+
+    # Указываем, что функция принимает аргумент void *
+    testpp.test_del.argtypes = [ctypes.c_void_p]
+    # Удаляем класс
+    testpp.test_del(test)
 
     ButtonApp().run()
