@@ -13,12 +13,12 @@ ifeq ($(CC),gcc)
     STRIP = strip
 else ifeq ($(CC),arm-linux-gnueabi-gcc)
     $(info ************  armv7-a ************)
-    CFLAGS = -Wl,-hash-style=sysv -g -O2 -march=armv7-a
+    CFLAGS = -Wl,-hash-style=sysv -g -O2 -march=armv7-a -D __ANDROID__=1
     PFLAGS = -std=c++17
     STRIP = arm-linux-gnueabi-strip
 else ifeq ($(CC),aarch64-linux-gnu-gcc)
     $(info ************  armv8-a ************)
-    CFLAGS = -Wl,-hash-style=sysv -g -O2 -march=armv8-a
+    CFLAGS = -Wl,-hash-style=sysv -g -O2 -march=armv8-a -D __ANDROID__=1
     PFLAGS = -std=c++17
     STRIP = aarch64-linux-gnu-strip
 else
