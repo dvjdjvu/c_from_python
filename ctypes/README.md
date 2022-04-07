@@ -29,3 +29,7 @@ make CFLAGS=-D__ANDROID__=1
 buildozer android debug
 adb install -r ./bin/kivy_test-*.apk
 ```
+
+```bash
+adb logcat | grep python
+```
