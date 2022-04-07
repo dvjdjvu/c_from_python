@@ -21,12 +21,7 @@ make CC=aarch64-linux-gnu-gcc PP=aarch64-linux-gnu-g++ CFLAGS=-D__ANDROID__=1
 ### Clang
  - **aarch64-linux-android21**, don't forget chanche path to clang in Makefile.
 ```bash
-make make CFLAGS+="-D__ANDROID__=1 -target aarch64-linux-android21"
+make CFLAGS=-D__ANDROID__=1
 ```
 
-### Buildozer
-Copy ***.so** in buildozer dir.
-```bash
-make android
-```
 
