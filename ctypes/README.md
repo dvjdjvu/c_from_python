@@ -24,4 +24,8 @@ make CC=aarch64-linux-gnu-gcc PP=aarch64-linux-gnu-g++ CFLAGS=-D__ANDROID__=1
 make CFLAGS=-D__ANDROID__=1
 ```
 
-
+### python
+```bash
+buildozer android debug
+adb install -r ./bin/kivy_test-*.apk
+```
