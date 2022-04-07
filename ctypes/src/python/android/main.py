@@ -5,8 +5,6 @@ import os
 import sys
 import ctypes, ctypes.util
 
-ctypes.cdll.LoadLibrary('libs/libs_arm64_v8a/libc++_shared.so')
-
 import kivy
 kivy.require("1.9.1")
 from kivy.app import App
@@ -40,7 +38,7 @@ if __name__ == "__main__":
     test = None
     # Загрузка библиотеки
     try:
-        test = ctypes.CDLL('libtest.so')
+        test = ctypes.CDLL(ctypes.util.find_library('libtest'))
     except OSError as e:
         print(str(e))
         exit(0)
@@ -145,7 +143,7 @@ if __name__ == "__main__":
     print("\n\nC++\n")
 
     # Загрузка библиотеки
-    testpp = ctypes.CDLL('libs/libs_arm64_v8a/libtestpp.so')
+    testpp = ctypes.CDLL(ctypes.util.find_library('libtestpp.so'))
 
     # Указываем, что функция возвращает указатель
     testpp.test_new.restype = ctypes.c_void_p

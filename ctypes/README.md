@@ -11,17 +11,17 @@ make CC=gcc PP=g++
 ### GCC
  - **armv7-a**
 ```bash
-make CC=arm-linux-gnueabi-gcc PP=arm-linux-gnueabi-g++ -D __ANDROID__=1
+make CC=arm-linux-gnueabi-gcc PP=arm-linux-gnueabi-g++ CFLAGS=-D__ANDROID__=1
 ```
  - **armv8-a**
 ```bash
-make CC=aarch64-linux-gnu-gcc PP=aarch64-linux-gnu-g++ -D __ANDROID__=1
+make CC=aarch64-linux-gnu-gcc PP=aarch64-linux-gnu-g++ CFLAGS=-D__ANDROID__=1
 ```
 
 ### Clang
  - **aarch64-linux-android21**, don't forget chanche path to clang in Makefile.
 ```bash
-make -D __ANDROID__=1
+make make CFLAGS+="-D__ANDROID__=1 -target aarch64-linux-android21"
 ```
 
 ### Buildozer

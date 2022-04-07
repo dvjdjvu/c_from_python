@@ -13,7 +13,7 @@ package.domain = com.heattheatr
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,jpeg,ttf,so
+source.include_exts = py,png,jpg,jpeg,ttf, #so
 
 # (list) Application version
 version = 0.0.1
@@ -61,7 +61,8 @@ android.arch = arm64-v8a
 
 # (list) Android additionnal libraries to copy into libs/armeabi
 #android.add_src = /home/djvu/workspace/intercom/phone/lib/libtest/*.6
-android.add_libs_armeabi_v7a = /home/djvu/workspace/intercom/phone/libs/libs_arm64_v8a/*.*
+android.add_libs_arm64_v8a = /home/djvu/workspace/intercom/phone/libs/libs_arm64_v8a/*.*
+android.add_libs_armeabi_v7a = /home/djvu/workspace/intercom/phone/libs/libs_armeabi_v7a/*.*
 #android.library_references = /home/djvu/workspasource.include_patternsce/intercom/phone/lib/libtest/*.6
 
 [buildozer]
