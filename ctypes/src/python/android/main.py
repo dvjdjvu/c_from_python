@@ -138,12 +138,10 @@ if __name__ == "__main__":
     ## C++
     ###
 
-    start_time = time.time()
-
     print("\n\nC++\n")
 
     # Загрузка библиотеки
-    testpp = ctypes.CDLL(ctypes.util.find_library('libtestpp.so'))
+    testpp = ctypes.CDLL(ctypes.util.find_library('libtestpp'))
 
     # Указываем, что функция возвращает указатель
     testpp.test_new.restype = ctypes.c_void_p

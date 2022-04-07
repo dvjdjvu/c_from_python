@@ -1,9 +1,9 @@
 #ifndef _TEST_HPP_
 #define _TEST_HPP_
 
-#include <iostream>
 #include <string>
 #include <cstring>
+#include <iostream>
 
 class test {
 public:
