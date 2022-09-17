@@ -8,6 +8,8 @@ make CC=gcc PP=g++
 
 ## Android
 
+[Article](https://habr.com/ru/post/656453/)
+
 ### GCC
  - **armv7-a**
 ```bash
