@@ -41,7 +41,7 @@ adb logcat | grep python
 ### Clang 
  - **armv7** and **armv8**.
 ```bash
-make CC=clang PP=clang++ CFLAGS="-arch armv7 -arch arm64 -isysroot  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+make CC=clang PP=clang++
 ```
 
 
