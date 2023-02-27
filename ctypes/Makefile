@@ -43,7 +43,7 @@ else
     	$(info ************  iOS  ************)
         $(info ************ clang ************)
     	override CFLAGS := $(CFLAGS) -arch armv7 -arch arm64 -isysroot  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk
-	STRIP = strip
+	STRIP = strip -x
 	BUILD = src/python/ios/libs/
     endif
 endif
