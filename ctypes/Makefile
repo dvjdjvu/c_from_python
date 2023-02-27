@@ -3,6 +3,7 @@
 LINK = $(CC)
 LINKPP = $(PP)
 UNAME := $(shell uname)
+EXT := so
 
 SRC = ./src/c
 
@@ -45,6 +46,7 @@ else
     	override CFLAGS := $(CFLAGS) -arch armv7 -arch arm64 -isysroot  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk
 	STRIP = strip -x
 	BUILD = src/python/ios/libs/
+	EXT := a
     endif
 endif
 
@@ -59,11 +61,8 @@ DEPSPP = $(SRC)/test.hpp
 OBJS = $(BUILD)/test.o 
 OBJSPP = $(BUILD)/test.pp.o 
 
-BINS = $(BUILD)/libtest.so \
-	$(BUILD)/libtestpp.so 
-
-BINS2 = libtest.so \
-	libtestpp.so
+BINS = $(BUILD)/libtest.$(EXT) \
+	$(BUILD)/libtestpp.$(EXT) 
 
 all: prebuild \
 	$(BINS)
