@@ -44,7 +44,11 @@ adb logcat | grep python
 make
 cd src/python/ios
 toolchain build python3 kivy 
-toolchain create iOS .
+toolchain create test .
+
+cd test-ios
+xcodebuild -list -project test.xcodeproj
+xcodebuild -workspace test.scworkspace -scheme test build
 ```
 
 
