@@ -42,6 +42,9 @@ adb logcat | grep python
  - **armv7** and **armv8**. You can do it in **mac OS** only. 
 ```bash
 make
+cd src/python/ios
+toolchain build python3 kivy 
+toolchain create iOS .
 ```
 
 
