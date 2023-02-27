@@ -40,7 +40,7 @@ else
     endif
     
     ifeq ($(UNAME), Darwin)
-    	$(info ************  iOS ************)
+    	$(info ************   iOS  ************)
     	override CFLAGS := $(CFLAGS) -arch armv7 -arch arm64 -isysroot  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk
 	BUILD = src/python/ios/libs/
     endif
