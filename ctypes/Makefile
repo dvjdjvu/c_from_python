@@ -7,30 +7,42 @@ SRC = ./src/c
 
 ifeq ($(CC),gcc)
     $(info ************  x86_64 ************)
+    $(info ************  Linux  ************)
     override CFLAGS := $(CFLAGS) -g -O2
     override PFLAGS := $(PFLAGS) -std=c++17
     STRIP = strip
     BUILD = ./objs
 else ifeq ($(CC),arm-linux-gnueabi-gcc)
     $(info ************  armv7-a ************)
+    $(info ************  Android ************)
     override CFLAGS := $(CFLAGS) -Wl,-hash-style=sysv -g -O2 -march=armv7-a
     override PFLAGS := $(PFLAGS) -std=c++17
     STRIP = arm-linux-gnueabi-strip
     BUILD = src/python/android/libs/libs_armeabi_v7a/
 else ifeq ($(CC),aarch64-linux-gnu-gcc)
     $(info ************  armv8-a ************)
+    $(info ************  Android ************)
     override CFLAGS := $(CFLAGS) -Wl,-hash-style=sysv -g -O2 -march=armv8-a
     override PFLAGS := $(PFLAGS) -std=c++17
     STRIP = aarch64-linux-gnu-strip
     BUILD = src/python/android/libs/libs_arm64_v8a/
 else
     $(info ************  clang ************)
-    CC = /home/djvu/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
-    PP = /home/djvu/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
-    override CFLAGS := $(CFLAGS) -target aarch64-linux-android21
-    override PFLAGS := $(PFLAGS) -std=c++17 -stdlib=libc++
-    STRIP = /home/djvu/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip
-    BUILD = src/python/android/libs/libs_arm64_v8a/
+    ifeq ($(UNAME), Linux)
+    	$(info ************  Android ************)
+        CC = ~/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+        PP = ~/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
+        override CFLAGS := $(CFLAGS) -target aarch64-linux-android21
+        override PFLAGS := $(PFLAGS) -std=c++17 -stdlib=libc++
+        STRIP = /home/djvu/.buildozer/android/platform/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip
+        BUILD = src/python/android/libs/libs_arm64_v8a/
+    endif
+    
+    ifeq ($(UNAME), Darwin)
+    	$(info ************  iOS ************)
+    	override CFLAGS := $(CFLAGS) -arch armv7 -arch arm64 -isysroot  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk
+	BUILD = src/python/ios/libs/
+    endif
 endif
 
 CSAHREDLIBS = -shared
