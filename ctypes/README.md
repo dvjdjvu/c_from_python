@@ -39,9 +39,9 @@ adb logcat | grep python
 ## iOS
 
 ### Clang 
- - **armv7** and **armv8**.
+ - **armv7** and **armv8**. You can do it in **mac OS** only. 
 ```bash
-make CC=clang PP=clang++
+make
 ```
 
 
