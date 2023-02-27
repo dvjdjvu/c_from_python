@@ -2,6 +2,7 @@
 #PP = arm-linux-gnueabi-g++
 LINK = $(CC)
 LINKPP = $(PP)
+UNAME := $(shell uname)
 
 SRC = ./src/c
 
