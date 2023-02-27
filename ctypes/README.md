@@ -35,3 +35,13 @@ adb install -r ./bin/kivy_test-*.apk
 ```bash
 adb logcat | grep python
 ```
+
+## iOS
+
+### Clang 
+ - **armv7** and **armv8**.
+```bash
+make CFLAGS="-arch armv7 -arch arm64 -isysroot  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+```
+
+
