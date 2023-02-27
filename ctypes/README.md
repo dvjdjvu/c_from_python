@@ -48,7 +48,7 @@ toolchain create test .
 
 cd test-ios
 xcodebuild -list -project test.xcodeproj
-xcodebuild -workspace test.xcworkspace -scheme test build
+xcodebuild -workspace test.xcodeproj/project.xcworkspace -scheme test build
 ```
 
 
