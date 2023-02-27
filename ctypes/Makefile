@@ -67,15 +67,15 @@ BINS = $(BUILD)/libtest.$(EXT) \
 all: prebuild \
 	$(BINS)
 
-$(BUILD)/libtest.so: \
+$(BUILD)/libtest.$(EXT): \
 	$(OBJS)
-	$(CC) $(CFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtest.so $(OBJS)
-	$(STRIP) $(BUILD)/libtest.so
+	$(CC) $(CFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtest.$(EXT) $(OBJS)
+	$(STRIP) $(BUILD)/libtest.$(EXT)
 
-$(BUILD)/libtestpp.so: \
+$(BUILD)/libtestpp.$(EXT): \
 	$(OBJSPP)
-	$(PP) $(CFLAGS) $(PFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtestpp.so $(OBJSPP)
-	$(STRIP) $(BUILD)/libtestpp.so
+	$(PP) $(CFLAGS) $(PFLAGS) $(CSAHREDLIBS) -o $(BUILD)/libtestpp.$(EXT) $(OBJSPP)
+	$(STRIP) $(BUILD)/libtestpp.$(EXT)
 
 $(BUILD)/test.o: $(DEPS) \
 	$(SRC)/test.c
@@ -95,4 +95,7 @@ install:
 	ldconfig
 
 android:
-	cp objs/*.so src/python/android/lib/libtest
+	cp objs/*.$(EXT) src/python/android/lib/libtest
+	
+ios:
+	cp objs/*.$(EXT) src/python/ios/lib/libtest
