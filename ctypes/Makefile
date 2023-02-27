@@ -43,6 +43,8 @@ else
     ifeq ($(UNAME), Darwin)
     	$(info ************  iOS  ************)
         $(info ************ clang ************)
+	CC = clang
+        PP = clang++
     	override CFLAGS := $(CFLAGS) -arch armv7 -arch arm64 -isysroot  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk
 	STRIP = strip -x
 	BUILD = src/python/ios/libs/
