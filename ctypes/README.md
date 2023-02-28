@@ -43,7 +43,7 @@ adb logcat | grep python
 ```bash
 make
 cd src/python/ios
-toolchain build python3 kivy 
+toolchain build python3 kivy openssl
 toolchain create test .
 
 cd test-ios
