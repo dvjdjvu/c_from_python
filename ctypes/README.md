@@ -46,7 +46,7 @@ make
 cd src/python/
 mkdir ios-build
 cd ios-build
-toolchain build python3 kivy openssl
+toolchain build python3 kivy openssl # very long operation
 toolchain create test ~/workspace/c_from_python/src/python/ios #<full_path_to_my_app_source_directory>
 open test-ios/test.xcodeproj
 ```
