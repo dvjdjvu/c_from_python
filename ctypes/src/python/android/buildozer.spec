@@ -20,7 +20,7 @@ version = 0.0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, kivy==2.0.0
+requirements = python3, kivy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -57,13 +57,11 @@ android.skip_update = False
 android.accept_sdk_license = True
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.arch = arm64-v8a
+android.archs = arm64-v8a
 
 # (list) Android additionnal libraries to copy into libs/armeabi
-#android.add_src = /home/djvu/workspace/intercom/phone/lib/libtest/*.6
-android.add_libs_arm64_v8a = /home/djvu/workspace/intercom/c_from_python/ctypes/src/python/android/libs/libs_arm64_v8a/*.*
-android.add_libs_armeabi_v7a = /home/djvu/workspace/intercom/c_from_python/ctypes/src/python/android/libs/libs_arm64_v8a/*.*
-#android.library_references = /home/djvu/workspasource.include_patternsce/intercom/phone/lib/libtest/*.6
+android.add_libs_arm64_v8a = %(source.dir)s/libs/libs_arm64_v8a/*.*
+android.add_libs_armeabi_v7a = %(source.dir)s/libs/libs_armeabi-v7a/*.*
 
 [buildozer]
 
