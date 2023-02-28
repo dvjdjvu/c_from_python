@@ -43,9 +43,11 @@ adb logcat | grep python
  - **armv7** and **armv8**. You can do it in **mac OS** only. 
 ```bash
 make
-cd src/python/ios
+cd src/python/
+mkdir ios-build
+cd ios-build
 toolchain build python3 kivy openssl
-toolchain create test .
+toolchain create test ~/workspace/c_from_python/src/python/ios #<full_path_to_my_app_source_directory>
 
 cd test-ios
 xcodebuild -list -project test.xcodeproj
