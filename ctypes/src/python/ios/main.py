@@ -40,10 +40,10 @@ if __name__ == "__main__":
     # Загрузка библиотеки
     try:
         #test = ctypes.CDLL(ctypes.util.find_library('libtest'))
-        test = ctypes.CDLL('libtest')
+        test = ctypes.CDLL('libtest.a')
     except OSError as e:
         print(str(e))
-        exit(0)
+        #exit(0)
     '''
     ###
     ## C
