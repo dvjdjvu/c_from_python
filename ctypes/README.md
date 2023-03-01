@@ -40,9 +40,17 @@ adb logcat | grep python
 ## iOS
 
 ### Clang 
- - **armv7** and **armv8**. You can do it in **mac OS** only. 
+You can do it in **mac OS** only. 
+
+ - **armv7**. 
 ```bash
-make BUILD="src/python/ios/libs_arm/" CFLAGS="-arch armv7 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+make BUILD="src/python/ios/libs_armv7/" CFLAGS="-arch armv7 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+```
+
+ - **arm64v8**
+
+```bash
+make BUILD="src/python/ios/libs_arm64v8/" CFLAGS="-arch arm64v8 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 ```
 
  - emulator **x86_64**
