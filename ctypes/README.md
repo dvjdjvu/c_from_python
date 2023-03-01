@@ -49,7 +49,7 @@ cd ios-build
 toolchain build python3 kivy openssl # very long operation
 toolchain create test /Users/djvu/workspace/c_from_python/src/python/ios #<full_path_to_my_app_source_directory>
 ```
-and RUN in **Xcode**
+and **RUN** in **Xcode**
 
 ```bash
 open test-ios/test.xcodeproj
