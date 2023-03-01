@@ -55,6 +55,12 @@ and **RUN** in **Xcode**
 open test-ios/test.xcodeproj
 ```
 
+if need to update the project:
+```bash
+toolchain update test-ios
+```
+
+
 Console doesnt work now.
 ```bash
 cd test-ios
