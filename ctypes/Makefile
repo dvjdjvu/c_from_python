@@ -45,7 +45,7 @@ else
         $(info ************ clang ************)
 	CC = clang
         PP = clang++
-    	override CFLAGS := $(CFLAGS)
+    	override CFLAGS := $(CFLAGS) -arch $(ARCH)
 	STRIP = strip -x
 	BUILD = src/python/ios/libs/$(ARCH)/
 	EXT := a
