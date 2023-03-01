@@ -47,7 +47,7 @@ make CFLAGS=-arch armv7 -arch arm64
 
  - emulator **x86_64**
 ```bash
-make CFLAGS=-arch x86_64
+make CFLAGS=-arch x86_64 -mios-simulator-version-min=8.0
 ```
 
 ```
