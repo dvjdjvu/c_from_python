@@ -42,7 +42,7 @@ adb logcat | grep python
 ### Clang 
 You can do it in **mac OS** only. 
 
- - **armv7**. 
+ - **armv7**
 ```bash
 make BUILD="src/python/ios/libs_armv7/" CFLAGS="-arch armv7 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 ```
