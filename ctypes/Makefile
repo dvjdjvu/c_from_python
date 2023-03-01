@@ -47,7 +47,7 @@ else
         PP = clang++
     	override CFLAGS := $(CFLAGS)
 	STRIP = strip -x
-	BUILD = $(BUILD)
+	BUILD = src/python/ios/libs/$(ARCH)/
 	EXT := a
     endif
 endif
