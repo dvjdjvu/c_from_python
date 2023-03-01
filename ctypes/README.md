@@ -42,7 +42,15 @@ adb logcat | grep python
 ### Clang 
  - **armv7** and **armv8**. You can do it in **mac OS** only. 
 ```bash
-make
+make CFLAGS=-arch armv7 -arch arm64
+```
+
+ - **emulator** x86_64
+```bash
+make CFLAGS=-arch x86_64
+```
+
+```
 cd src/python/
 mkdir ios-build
 cd ios-build
