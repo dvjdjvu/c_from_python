@@ -35,14 +35,16 @@ class ButtonApp(App):
 ##
 if __name__ == "__main__":
 
+    
     test = None
     # Загрузка библиотеки
     try:
-        test = ctypes.CDLL(ctypes.util.find_library('libtest'))
+        #test = ctypes.CDLL(ctypes.util.find_library('libtest'))
+        test = ctypes.CDLL('libtest')
     except OSError as e:
         print(str(e))
         exit(0)
-
+    '''
     ###
     ## C
     ###
@@ -199,5 +201,5 @@ if __name__ == "__main__":
     testpp.test_del.argtypes = [ctypes.c_void_p]
     # Удаляем класс
     testpp.test_del(test)
-
+    '''
     ButtonApp().run()
