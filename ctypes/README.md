@@ -45,7 +45,7 @@ adb logcat | grep python
 make CFLAGS=-arch armv7 -arch arm64
 ```
 
- - **emulator** x86_64
+ - emulator **x86_64**
 ```bash
 make CFLAGS=-arch x86_64
 ```
