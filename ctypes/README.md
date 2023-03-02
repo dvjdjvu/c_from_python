@@ -66,6 +66,8 @@ make ARCH=x86_64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Pl
 Create a universal file from multy single-architecture files:
 ```bash
 lipo -arch armv7 src/python/ios/libs/armv7/libtest.a -arch arm64 src/python/ios/libs/arm64/libtest.a  -arch x86_64 src/python/ios/libs/x86_64/libtest.a  -create -output src/python/ios/libs/libtest.a
+
+lipo -arch armv7 src/python/ios/libs/armv7/libtestpp.a -arch arm64 src/python/ios/libs/arm64/libtestpp.a  -arch x86_64 src/python/ios/libs/x86_64/libtestpp.a  -create -output src/python/ios/libs/libtestpp.a
 ```
 
 How can I get the architecture of a '.a' file?
