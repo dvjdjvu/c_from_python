@@ -58,7 +58,7 @@ make ARCH=arm64v8 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/P
 make ARCH=x86_64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
 ```
 
-create one lib:
+Create a universal file from multy single-architecture files:
 ```bash
 lipo -arch armv7 src/python/ios/libs/armv7/libtest.a -arch x86_64 src/python/ios/libs/x86_64/libtest.a  -create -output src/python/ios/libs/libtest.a
 ```
