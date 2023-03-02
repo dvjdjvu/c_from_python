@@ -39,7 +39,6 @@ if __name__ == "__main__":
     # Загрузка библиотеки
     try:
         test = ctypes.CDLL('libs/libtest.a')
-        pass
     except OSError as e:
         print(str(e))
         exit(0)
@@ -142,7 +141,11 @@ if __name__ == "__main__":
     print("\n\nC++\n")
 
     # Загрузка библиотеки
-    testpp = ctypes.CDLL('libs/libtestpp.a')
+    try:
+        testpp = ctypes.CDLL('libs/libtestpp.a')
+    except OSError as e:
+        print(str(e))
+        exit(0)
 
     # Указываем, что функция возвращает указатель
     testpp.test_new.restype = ctypes.c_void_p
