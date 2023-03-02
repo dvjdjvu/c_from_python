@@ -42,20 +42,37 @@ adb logcat | grep python
 ### Clang 
 You can do it in **mac OS** only. 
 
+ - **armv6**
+```bash
+make ARCH=armv6 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+```
+
  - **armv7**
 ```bash
 make ARCH=armv7 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 ```
 
- - **arm64v8**
+ - **arm64** (means armv8 aarch64)
 
 ```bash
-make ARCH=arm64v8 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+make ARCH=arm64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 ```
 
  - emulator **x86_64**
 ```bash
 make ARCH=x86_64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
+```
+
+Create a universal file from multy single-architecture files:
+```bash
+lipo -arch armv7 src/python/ios/libs/armv7/libtest.a -arch arm64 src/python/ios/libs/arm64/libtest.a  -arch x86_64 src/python/ios/libs/x86_64/libtest.a  -create -output src/python/ios/libs/libtest.a
+
+lipo -arch armv7 src/python/ios/libs/armv7/libtestpp.a -arch arm64 src/python/ios/libs/arm64/libtestpp.a  -arch x86_64 src/python/ios/libs/x86_64/libtestpp.a  -create -output src/python/ios/libs/libtestpp.a
+```
+
+How can I get the architecture of a '.a' file?
+```bash
+lipo -info libtest.a
 ```
 
 ```
@@ -64,11 +81,6 @@ mkdir ios-build
 cd ios-build
 toolchain build python3 kivy openssl # very long operation
 toolchain create test /Users/djvu/workspace/c_from_python/src/python/ios #<full_path_to_my_app_source_directory>
-```
-
-How can I get the architecture of a '.a' file?
-```bash
-lipo -info libtest.a
 ```
 
 and **RUN** in **Xcode**
