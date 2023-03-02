@@ -34,17 +34,16 @@ class ButtonApp(App):
 #  Старт.
 ##
 if __name__ == "__main__":
-
     
     test = None
     # Загрузка библиотеки
     try:
-        #test = ctypes.CDLL(ctypes.util.find_library('libtest'))
-        test = ctypes.CDLL('libtest.a')
+        test = ctypes.CDLL('libs/libtest.a')
+        pass
     except OSError as e:
         print(str(e))
-        #exit(0)
-    '''
+        exit(0)
+    
     ###
     ## C
     ###
@@ -135,7 +134,7 @@ if __name__ == "__main__":
     # Полученные данные из C
     print('ret val1 = {}\nret val2 = {}\nret val3 = {}'.format(ret.contents.val1, ret.contents.val2,
                                                                ret.contents.val3.decode("utf-8")))
-
+    
     ###
     ## C++
     ###
@@ -143,7 +142,7 @@ if __name__ == "__main__":
     print("\n\nC++\n")
 
     # Загрузка библиотеки
-    testpp = ctypes.CDLL(ctypes.util.find_library('libtestpp'))
+    testpp = ctypes.CDLL('libs/libtestpp.a')
 
     # Указываем, что функция возвращает указатель
     testpp.test_new.restype = ctypes.c_void_p
@@ -201,5 +200,5 @@ if __name__ == "__main__":
     testpp.test_del.argtypes = [ctypes.c_void_p]
     # Удаляем класс
     testpp.test_del(test)
-    '''
+    
     ButtonApp().run()
