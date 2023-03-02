@@ -42,15 +42,20 @@ adb logcat | grep python
 ### Clang 
 You can do it in **mac OS** only. 
 
+ - **armv6**
+```bash
+make ARCH=armv6 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+```
+
  - **armv7**
 ```bash
 make ARCH=armv7 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 ```
 
- - **arm64v8**
+ - **arm64** (means armv8 aarch64)
 
 ```bash
-make ARCH=arm64v8 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+make ARCH=arm64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
 ```
 
  - emulator **x86_64**
@@ -60,7 +65,7 @@ make ARCH=x86_64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Pl
 
 Create a universal file from multy single-architecture files:
 ```bash
-lipo -arch armv7 src/python/ios/libs/armv7/libtest.a -arch x86_64 src/python/ios/libs/x86_64/libtest.a  -create -output src/python/ios/libs/libtest.a
+lipo -arch armv7 src/python/ios/libs/armv7/libtest.a -arch arm64 src/python/ios/libs/arm64/libtest.a  -arch x86_64 src/python/ios/libs/x86_64/libtest.a  -create -output src/python/ios/libs/libtest.a
 ```
 
 ```
