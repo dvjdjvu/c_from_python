@@ -83,19 +83,20 @@ toolchain build python3 kivy openssl # very long operation
 toolchain create test /Users/djvu/workspace/c_from_python/src/python/ios #<full_path_to_my_app_source_directory>
 ```
 
-and **RUN** in **Xcode**
+### python
+
+Open and **RUN** the project in **Xcode**:
 
 ```bash
 open test-ios/test.xcodeproj
 ```
 
-if need to update the project:
+If you need to update the project:
 ```bash
 toolchain update test-ios
 ```
 
-
-Console doesnt work now.
+TODO: Make starting from console. Doesn't work now.
 ```bash
 cd test-ios
 xcodebuild -list -project test.xcodeproj
