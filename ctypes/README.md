@@ -68,17 +68,17 @@ Create a universal file from multy single-architecture files:
 lipo -arch armv7 src/python/ios/libs/armv7/libtest.a -arch arm64 src/python/ios/libs/arm64/libtest.a  -arch x86_64 src/python/ios/libs/x86_64/libtest.a  -create -output src/python/ios/libs/libtest.a
 ```
 
+How can I get the architecture of a '.a' file?
+```bash
+lipo -info libtest.a
+```
+
 ```
 cd src/python/
 mkdir ios-build
 cd ios-build
 toolchain build python3 kivy openssl # very long operation
 toolchain create test /Users/djvu/workspace/c_from_python/src/python/ios #<full_path_to_my_app_source_directory>
-```
-
-How can I get the architecture of a '.a' file?
-```bash
-lipo -info libtest.a
 ```
 
 and **RUN** in **Xcode**
