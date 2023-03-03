@@ -39,6 +39,8 @@ adb logcat | grep python
 
 ## iOS
 
+[Article](https://habr.com/ru/post/720310/)
+
 ### Clang 
 You can do it in **mac OS** only. 
 
