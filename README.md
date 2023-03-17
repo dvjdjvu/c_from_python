@@ -1,4 +1,4 @@
-Примеры как вызывать C/C++ из Python, используя: ctypes, CFFI, pybind11, C API, boost.
+Примеры как вызывать C/C++ из Python, используя: ctypes (Linux, Android, iOS), CFFI, pybind11, C API, boost.
 
 [C/C++ из Python (ctypes)](https://habr.com/ru/post/466499/)  
 [C/C++ из Python (CFFI, pybind11)](https://habr.com/ru/post/468099/)  
