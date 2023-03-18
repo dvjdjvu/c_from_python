@@ -85,6 +85,8 @@ toolchain build python3 kivy openssl # very long operation
 toolchain create test ~/workspace/c_from_python/ctypes/src/python/ios #<full_path_to_my_app_source_directory>
 ```
 
+#### Signing
+
 Signing libs for iPhone, emulator works without it:
 ```bash
 codesign -s djvu@inbox.ru src/python/ios/libs/libtest.a 
