@@ -46,18 +46,18 @@ You can do it in **mac OS** only.
 
  - **armv6**
 ```bash
-make ARCH=armv6 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+make ARCH=armv6 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk -miphoneos-version-min=12.0"
 ```
 
  - **armv7**
 ```bash
-make ARCH=armv7 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+make ARCH=armv7 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk -miphoneos-version-min=12.0"
 ```
 
  - **arm64** (means armv8 aarch64)
 
 ```bash
-make ARCH=arm64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk"
+make ARCH=arm64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk -miphoneos-version-min=12.0"
 ```
 
  - emulator **x86_64**
