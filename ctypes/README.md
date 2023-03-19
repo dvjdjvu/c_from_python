@@ -31,6 +31,7 @@ Building:
 ```bash
 cd src/python/android
 buildozer android debug
+```
 
 Installing in phone:
 ```bash
