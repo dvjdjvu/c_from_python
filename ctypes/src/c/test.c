@@ -14,6 +14,7 @@ func_ret_int(int val) {
         // Android Headers
     #elif __APPLE__
         // iOS Headers
+        printf("C get func_ret_int: %d\n", val);
     #else
         printf("C get func_ret_int: %d\n", val);
     #endif
@@ -27,6 +28,7 @@ func_ret_double(double val) {
         // Android Headers
     #elif __APPLE__
         // iOS Headers
+        printf("C get func_ret_double: %f\n", val);
     #else
         printf("C get func_ret_double: %f\n", val);
     #endif
@@ -40,6 +42,7 @@ func_ret_str(char *val) {
         // Android Headers
     #elif __APPLE__
         // iOS Headers
+        printf("C get func_ret_str: %s\n", val);
     #else
         printf("C get func_ret_str: %s\n", val);
     #endif
@@ -53,6 +56,7 @@ func_many_args(int val1, double val2, char val3, short val4) {
         // Android Headers
     #elif __APPLE__
         // iOS Headers
+        printf("C get func_many_args: int - %d, double - %f, char - %c, short - %d\n", val1, val2, val3, val4);
     #else
         printf("C get func_many_args: int - %d, double - %f, char - %c, short - %d\n", val1, val2, val3, val4);
     #endif
