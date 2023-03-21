@@ -84,6 +84,7 @@ void
 func_callback(int (*f)(int, int)) {
     int a = 3, b = 7;
     puts("00000");
+    printf("f pointer = %p\n", f);
     int ret = f(a, b);
     puts("11111");
     #ifdef __ANDROID__
