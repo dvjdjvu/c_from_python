@@ -67,6 +67,7 @@ func_ret_struct(test_st_t *test_st) {
             // Android Headers
         #elif __APPLE__
             // iOS Headers
+            printf("C get test_st: val1 - %d, val2 - %f, val3 - %c\n", test_st->val1, test_st->val2, test_st->val3);
         #else
             printf("C get test_st: val1 - %d, val2 - %f, val3 - %c\n", test_st->val1, test_st->val2, test_st->val3);
         #endif
@@ -78,16 +79,15 @@ func_ret_struct(test_st_t *test_st) {
 void
 func_callback(int (*f)(int, int)) {
     int a = 3, b = 7;
-
+    puts("00000");
     int ret = f(a, b);
-    
+    puts("11111");
     #ifdef __ANDROID__
         // Android Headers
     #elif __APPLE__
         // iOS Headers
+        printf("C get func_callback: %d\n", ret);
     #else
         printf("C get func_callback: %d\n", ret);
     #endif
 }
-
-
