@@ -84,7 +84,8 @@ lipo -arch armv7 src/python/ios/libs/armv7/libtestpp.a -arch arm64 src/python/io
 
 How can I get the architecture of a '.a' file?
 ```bash
-lipo -info libtest.a
+lipo -info src/python/ios/libs/libtest.a
+lipo -info src/python/ios/libs/libtestpp.a
 ```
 
 ```
