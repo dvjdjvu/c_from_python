@@ -73,6 +73,21 @@ func_ret_struct(test_st_t *test_st) {
     }
     
     return test_st;
-} 
+}
+
+void
+func_callback(int (*f)(int, int)) {
+    int a = 3, b = 7;
+
+    int ret = f(a, b);
+    
+    #ifdef __ANDROID__
+        // Android Headers
+    #elif __APPLE__
+        // iOS Headers
+    #else
+        printf("C get func_callback: %d\n", ret);
+    #endif
+}
 
 

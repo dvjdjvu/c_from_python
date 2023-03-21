@@ -30,6 +30,12 @@ class ButtonApp(App):
     def callback(self, event):
         exit(0)
 
+# Функция callback, передается в C и там вызывается.
+def callback_python(a, b):
+    print("callback_python a = {}, b = {}".format(a, b))
+    
+    return a + b
+
 ##
 #  Старт.
 ##
@@ -74,12 +80,19 @@ if __name__ == "__main__":
     # Указываем, что функция принимает аргументы int, double. char, short
     test.func_many_args.argtypes = [ctypes.c_int, ctypes.c_double, ctypes.c_char, ctypes.c_short]
 
+    # Создаем тип функции callback, 1-ый аргумент что возращает функция, далее аргументы функции
+    callback_type = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
+    # Создаем callback для C из функции python
+    callback_func = callback_type(callback_python)
+
     print('Работа с функциями:')
     print('ret func_ret_int: ', test.func_ret_int(101))
     print('ret func_ret_double: ', test.func_ret_double(12.123456789))
     # Необходимо строку привести к массиву байтов, и массив байтов к строке.
     print('ret func_ret_str: ', test.func_ret_str('Hello!'.encode('utf-8')).decode("utf-8"))
     print('ret func_many_args: ', test.func_many_args(15, 18.1617, 'X'.encode('utf-8'), 32000).decode("utf-8"))
+    # Функция func_callback ни чего не возвращает
+    test.func_callback(callback_func)
 
     ##
     # Работа с переменными

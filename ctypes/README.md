@@ -6,6 +6,10 @@ make CC=gcc PP=g++
 ./src/python/x86_64/main.py
 ```
 
+```bash
+make CC=gcc clean
+```
+
 ## Android
 
 [Article](https://habr.com/ru/post/656453/)
