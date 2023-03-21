@@ -12,8 +12,16 @@ ifeq ($(CC),gcc)
     $(info ************  x86_64 ************)
     override CFLAGS := $(CFLAGS) -g -O2
     override PFLAGS := $(PFLAGS) -std=c++17
-    STRIP = strip --strip-unneeded
     BUILD = ./objs
+
+    ifeq ($(UNAME), Linux)
+	STRIP = strip --strip-unneeded
+    endif
+
+    ifeq ($(UNAME), Darwin)
+	STRIP = strip -x
+    endif
+
 else ifeq ($(CC),arm-linux-gnueabi-gcc)
     $(info ************  Android ************)
     $(info ************  armv7-a ************)
