@@ -91,7 +91,7 @@ if __name__ == "__main__":
     # Необходимо строку привести к массиву байтов, и массив байтов к строке.
     print('ret func_ret_str: ', test.func_ret_str('Hello!'.encode('utf-8')).decode("utf-8"))
     print('ret func_many_args: ', test.func_many_args(15, 18.1617, 'X'.encode('utf-8'), 32000).decode("utf-8"))
-    # Функция func_callback ни чего не возвращает
+    # Функция func_callback ни чего не возвращает, вызывает callback_python
     test.func_callback(callback_func)
 
     ##
