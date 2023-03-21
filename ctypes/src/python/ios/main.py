@@ -32,7 +32,7 @@ class ButtonApp(App):
 
 # Функция callback, передается в C и там вызывается.
 def callback_python(a, b):
-    print("callback_python a = {}, b = {}".format(a, b))
+    #print("callback_python a = {}, b = {}".format(a, b))
     
     return a + b
 
