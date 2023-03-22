@@ -81,7 +81,7 @@ if __name__ == "__main__":
     test.func_many_args.argtypes = [ctypes.c_int, ctypes.c_double, ctypes.c_char, ctypes.c_short]
 
     # Создаем тип функции callback, 1-ый аргумент что возращает функция, далее аргументы функции
-    callback_type = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
+    callback_type = ctypes.PYFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
     # Создаем callback для C из функции python
     callback_func = callback_type(callback_python)
 
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     b = ctypes.c_double.in_dll(test, "b")
     print('ret b: ', b.value)
 
-    # Указываем, что переменная типа char
+    # Указываем, что пе�еменная типа char
     c = ctypes.c_char.in_dll(test, "c")
     print('ret c: ', c.value.decode("utf-8"))
 
