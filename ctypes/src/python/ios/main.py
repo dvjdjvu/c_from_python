@@ -33,8 +33,11 @@ class ButtonApp(App):
 # Функция callback, передается в C и там вызывается.
 def callback_python(a, b):
     print("callback_python a = {}, b = {}".format(a, b))
-    
     return a + b
+
+def callback_python2():
+    print("callback_python2")
+    return
 
 ##
 #  Старт.
@@ -81,9 +84,15 @@ if __name__ == "__main__":
     test.func_many_args.argtypes = [ctypes.c_int, ctypes.c_double, ctypes.c_char, ctypes.c_short]
 
     # Создаем тип функции callback, 1-ый аргумент что возращает функция, далее аргументы функции
+<<<<<<< HEAD
     callback_type = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
+=======
+    #callback_type = ctypes.PYFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
+    callback_type = ctypes.PYFUNCTYPE()
+>>>>>>> 87d2780fd27fdb35f5182b1f8dd2e5a1ecdd8ae2
     # Создаем callback для C из функции python
-    callback_func = callback_type(callback_python)
+    #callback_func = callback_type(callback_python)
+    callback_func = callback_type(callback_python2)
 
     print('Работа с функциями:')
     print('ret func_ret_int: ', test.func_ret_int(101))
