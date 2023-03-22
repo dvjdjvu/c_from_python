@@ -76,3 +76,14 @@ func_callback(int (*f)(int, int)) {
         printf("C get func_callback: %d\n", ret);
     #endif
 }
+
+void
+func_callback2(void (*f)()) {
+    f();
+
+    #ifdef __ANDROID__
+
+    #else
+
+    #endif
+}
