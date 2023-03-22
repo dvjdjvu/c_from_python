@@ -83,10 +83,8 @@ func_ret_struct(test_st_t *test_st) {
 void
 func_callback(int (*f)(int, int)) {
     int a = 3, b = 7;
-    puts("00000");
-    printf("f pointer = %p\n", f);
     int ret = f(a, b);
-    puts("11111");
+
     #ifdef __ANDROID__
         // Android Headers
     #elif __APPLE__

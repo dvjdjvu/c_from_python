@@ -16,7 +16,7 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,ttf
 
 # (list) Application version
-version = 0.0.1
+version = 0.0.3
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
@@ -37,13 +37,13 @@ fullscreen = 1
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE
 
 # (int) Target Android API, should be as high as possible.
-android.api = 28
+android.api = 31
 
 # (int) Minimum API your APK will support.
-android.minapi = 21
+android.minapi = 23
 
 # (str) Android NDK version to use
-android.ndk = 19c
+android.ndk = 23b
 
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time

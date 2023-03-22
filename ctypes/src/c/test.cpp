@@ -4,17 +4,32 @@
  * Методы класса
  **/
 std::string test::ret_str(std::string val) {
-    std::cout << "C get ret_str: " << val << std::endl;
+    #ifdef __ANDROID__
+
+    #else
+        std::cout << "C get ret_str: " << val << std::endl;
+    #endif
+
     return val;
 }
 
 int test::ret_int(int val) {
-    std::cout << "C get ret_int: " << val << std::endl;
+    #ifdef __ANDROID__
+
+    #else
+        std::cout << "C get ret_int: " << val << std::endl;
+    #endif
+
     return val;
 }
 
 double test::ret_double(double val) {
-    std::cout << "C get ret_double: " << val << std::endl;
+    #ifdef __ANDROID__
+
+    #else
+        std::cout << "C get ret_double: " << val << std::endl;
+    #endif
+
     return val;
 }
 
