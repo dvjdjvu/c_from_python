@@ -6,7 +6,7 @@ import sys
 import ctypes, ctypes.util
 
 import kivy
-kivy.require("1.9.1")
+kivy.require("2.1.0")
 from kivy.app import App
 from kivy.uix.button import Button
 
@@ -34,10 +34,6 @@ class ButtonApp(App):
 def callback_python(a, b):
     print("callback_python a = {}, b = {}".format(a, b))
     return a + b
-
-def callback_python2():
-    print("callback_python2")
-    return
 
 ##
 #  Старт.
@@ -83,12 +79,13 @@ if __name__ == "__main__":
     # Указываем, что функция принимает аргументы int, double. char, short
     test.func_many_args.argtypes = [ctypes.c_int, ctypes.c_double, ctypes.c_char, ctypes.c_short]
 
+    ##
+    # Не работает!!! на iOS arm64.
+    ##
     # Создаем тип функции callback, 1-ый аргумент что возращает функция, далее аргументы функции
     #callback_type = ctypes.PYFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
-    callback_type = ctypes.PYFUNCTYPE()
     # Создаем callback для C из функции python
     #callback_func = callback_type(callback_python)
-    callback_func = callback_type(callback_python2)
 
     print('Работа с функциями:')
     print('ret func_ret_int: ', test.func_ret_int(101))
@@ -97,7 +94,7 @@ if __name__ == "__main__":
     print('ret func_ret_str: ', test.func_ret_str('Hello!'.encode('utf-8')).decode("utf-8"))
     print('ret func_many_args: ', test.func_many_args(15, 18.1617, 'X'.encode('utf-8'), 32000).decode("utf-8"))
     # Функция func_callback ни чего не возвращает, вызывает callback_python
-    test.func_callback(callback_func)
+    #test.func_callback(callback_func)
 
     ##
     # Работа с переменными
