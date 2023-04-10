@@ -56,7 +56,7 @@ $(info ************ clang ************)
 		override CFLAGS := $(CFLAGS) -arch $(ARCH)
 	    STRIP = strip -x
 	    BUILD = src/python/ios/libs/$(ARCH)/
-	    EXT := a
+	    EXT := dylib
 	endif
 endif
 

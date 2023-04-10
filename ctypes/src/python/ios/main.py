@@ -22,7 +22,7 @@ class ButtonApp(App):
                    size_hint = (.2, .1),
                    pos_hint = {'x':.4, 'y':.45})
 
-        # bind() use to bind the button to function callback
+        # bind() use to bind the button to function callback.
         btn.bind(on_press = self.callback)
         return btn
 
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     test = None
     # Загрузка библиотеки
     try:
-        test = ctypes.CDLL('libs/libtest.a')
+        test = ctypes.CDLL('libs/libtest.dylib')
     except OSError as e:
         print(str(e))
         exit(0)
@@ -157,7 +157,7 @@ if __name__ == "__main__":
 
     # Загрузка библиотеки
     try:
-        testpp = ctypes.CDLL('libs/libtestpp.a')
+        testpp = ctypes.CDLL('libs/libtestpp.dylib')
     except OSError as e:
         print(str(e))
         exit(0)
