@@ -77,14 +77,14 @@ make ARCH=x86_64 CFLAGS="-isysroot /Applications/Xcode.app/Contents/Developer/Pl
 
 Create a universal file from multy single-architecture files:
 ```bash
-lipo -arch armv7 src/python/ios/libs/armv7/libtest.a -arch arm64 src/python/ios/libs/arm64/libtest.a  -arch x86_64 src/python/ios/libs/x86_64/libtest.a  -create -output src/python/ios/libs/libtest.a
-lipo -arch armv7 src/python/ios/libs/armv7/libtestpp.a -arch arm64 src/python/ios/libs/arm64/libtestpp.a  -arch x86_64 src/python/ios/libs/x86_64/libtestpp.a  -create -output src/python/ios/libs/libtestpp.a
+lipo -arch armv7 src/python/ios/libs/armv7/libtest.dylib -arch arm64 src/python/ios/libs/arm64/libtest.dylib -arch x86_64 src/python/ios/libs/x86_64/libtest.dylib -create -output src/python/ios/libs/libtest.dylib
+lipo -arch armv7 src/python/ios/libs/armv7/libtestpp.dylib -arch arm64 src/python/ios/libs/arm64/libtestpp.dylib -arch x86_64 src/python/ios/libs/x86_64/libtestpp.dylib -create -output src/python/ios/libs/libtestpp.dylib
 ```
 
-How can I get the architecture of a '.a' file?
+How can I get the architecture of a '.dylib' file?
 ```bash
-lipo -info src/python/ios/libs/libtest.a
-lipo -info src/python/ios/libs/libtestpp.a
+lipo -info src/python/ios/libs/libtest.dylib
+lipo -info src/python/ios/libs/libtestpp.dylib
 ```
 
 ```
@@ -99,15 +99,15 @@ toolchain create test ~/workspace/c_from_python/ctypes/src/python/ios #<full_pat
 
 Signing libs for iPhone, emulator works without it:
 ```bash
-codesign -s djvu@inbox.ru src/python/ios/libs/libtest.a 
-codesign -s djvu@inbox.ru src/python/ios/libs/libtestpp.a 
+codesign -s djvu@inbox.ru src/python/ios/libs/libtest.dylib 
+codesign -s djvu@inbox.ru src/python/ios/libs/libtestpp.dylib 
 ```
 Instead of djvu@inbox.ru, your **Apple ID**.
 
 View signature:
 ```bash
-codesign -d -v src/python/ios/libs/libtest.a 
-codesign -d -v src/python/ios/libs/libtestpp.a 
+codesign -d -v src/python/ios/libs/libtest.dylib 
+codesign -d -v src/python/ios/libs/libtestpp.dylib 
 ```
 
 ### python
